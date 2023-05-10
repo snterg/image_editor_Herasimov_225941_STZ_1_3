@@ -1,0 +1,16 @@
+﻿<Window x:Class="image_editor_Herasimov_225941.log_kor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:image_editor_Herasimov_225941"
+        mc:Ignorable="d"
+        Title="Окно настройки логарифмической коррекции" Height="100" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel>
+            <Label Content="Введите константу C:"/>
+            <TextBox x:Name="input" BorderBrush="Green"/>
+            <Button x:Name="BTNRES" Content="Принять" Click="BTNRES_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

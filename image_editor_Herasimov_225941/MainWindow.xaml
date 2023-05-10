@@ -1,0 +1,48 @@
+﻿<Window x:Class="image_editor_Herasimov_225941.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:local="clr-namespace:image_editor_Herasimov_225941"
+        mc:Ignorable="d"
+            Title="СТЗ Герасимов В.А. 225941" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowState="Maximized" Icon="icon.png">
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*" />
+            <RowDefinition Height="0.9*"/>
+            <RowDefinition Height="0.9*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Menu  Grid.Row="0" Grid.ColumnSpan="2" FontSize="14">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Загрузить" Click="btnUpl_Click" ></MenuItem>
+                <Separator />
+                <MenuItem Header="Закрыть" Click="MenuItem_Click_1" ></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Правка" x:Name="edit" >
+                <MenuItem Header="Логарифмическая коррекция" Click="MenuItem_Click" ></MenuItem>
+                <MenuItem Header="Оператор Робертса" Click="MenuItem_Click_2" ></MenuItem>
+                <MenuItem x:Name="redgist" Header="Гистограмма красная" Click="gist_Click" ></MenuItem>
+                <MenuItem x:Name="greengist" Header="Гистограмма зеленая" Click="gist_Click" ></MenuItem>
+                <MenuItem x:Name="bluegist" Header="Гистограмма синяя" Click="gist_Click" ></MenuItem>
+                <MenuItem x:Name="gist" Header="Гистограмма серая" Click="gist_Click" ></MenuItem>
+            </MenuItem>
+            <MenuItem Header="О программе" Click="MenuItem_Click_3" ></MenuItem>
+        </Menu>
+        <Label x:Name="labelUp" Content="Исходное фото" Grid.Row="1" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="24" Foreground="Gray" Opacity="0.5" Grid.ColumnSpan="2" Margin="0,73" MouseDoubleClick="btnUpl_Click"/>
+        <Label x:Name="labelgistUp" Content="Гистограмма яркости" Grid.Row="2" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="24" Foreground="Gray" Opacity="0.5" Grid.ColumnSpan="2" Margin="0,74,0,73"/>
+        <Image x:Name="imagebox"  Grid.Row="1" />
+        <TextBlock x:Name="path"  Grid.Row="1" HorizontalAlignment="Left" Panel.ZIndex="3" TextWrapping="WrapWithOverflow" Foreground="Black" Background="White" />
+        <lvc:CartesianChart x:Name="gistAxis_1" Series="{Binding SeriesCollection}" Grid.Row="2" Visibility="Hidden" LegendLocation="None">
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis></lvc:Axis>
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis  ></lvc:Axis>
+            </lvc:CartesianChart.AxisY>
+        </lvc:CartesianChart>
+    </Grid>
+</Window>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "image_editor_Herasimov_225941", "image_editor_Herasimov_225941\image_editor_Herasimov_225941.csproj", "{B67DEAA3-EAEE-4D31-8E14-E7E73D77F526}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B67DEAA3-EAEE-4D31-8E14-E7E73D77F526}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B67DEAA3-EAEE-4D31-8E14-E7E73D77F526}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B67DEAA3-EAEE-4D31-8E14-E7E73D77F526}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B67DEAA3-EAEE-4D31-8E14-E7E73D77F526}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {27DEE6AF-8358-4506-BF4D-E0E4C07CF8C6}
+	EndGlobalSection
+EndGlobal
