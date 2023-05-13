@@ -33,10 +33,10 @@ namespace image_editor_Herasimov_225941
 
         public Uri globalURL;
         public string filename;
-        public byte[] All = new byte[256];
-        public byte[] R = new byte[256];
-        public byte[] G = new byte[256];
-        public byte[] B = new byte[256];
+        public int[] All = new int[256];
+        public int[] R = new int[256];
+        public int[] G = new int[256];
+        public int[] B = new int[256];
         public struct clr
         {
             public byte red, green, blue;
@@ -102,20 +102,22 @@ namespace image_editor_Herasimov_225941
             Bitmap obj = new Bitmap(source);
             labelgistUp.Visibility = Visibility.Hidden;
 
-            int i, j;
+            int i, j,Y;
+
             Color color;
-            britness = new clr[obj.Width, obj.Height];
+            int w = obj.Width, h = obj.Height;
+            britness = new clr[w, h];
             // собираем статистику для изображения
-            for (i = 0; i < obj.Height; ++i)
-                for (j = 0; j < obj.Width; ++j)
+            for (i = 0; i < w; ++i)
+                for (j = 0; j < h; ++j)
                 {
-                    color = obj.GetPixel(j, i);
+                    color = obj.GetPixel(i, j);
 
-                    britness[j, i].red = color.R;
-                    britness[j, i].green = color.G;
-                    britness[j, i].blue = color.B;
+                    britness[i, j].red = color.R;
+                    britness[i, j].green = color.G;
+                    britness[i, j].blue = color.B;
 
-                    byte Y = Convert.ToByte(0.3 * color.R + 0.59 * color.G + 0.11 * color.B);
+                    Y = Convert.ToInt32(0.3 * color.R + 0.59 * color.G + 0.11 * color.B);
                     //byte Y = Convert.ToByte(0.212 * color.R + 0.715 * color.G + 0.072 * color.B);
                     if (Y > 255)
                         Y = 255;
@@ -131,8 +133,8 @@ namespace image_editor_Herasimov_225941
                 SeriesCollection[0].Values.Clear();
             gistAxis_1.Visibility = Visibility.Visible;
 
-            for (int k = 0; k < 255; k++)
-                SeriesCollection[0].Values.Add(Convert.ToInt32(All[k]));
+            for (int k = 0; k < 256; k++)
+                SeriesCollection[0].Values.Add((All[k]));
             DataContext = this;
 
         }
@@ -152,16 +154,19 @@ namespace image_editor_Herasimov_225941
                 Color color, new_color;
                 Bitmap new_image = new Bitmap(filename);
                 int i, j;
-                for (i = 0; i < new_image.Height; ++i)
-                    for (j = 0; j < new_image.Width; ++j)
+                int w = new_image.Width, h = new_image.Height;
+                for (i = 0; i < w; ++i)
+                {
+                    for (j = 0; j < h; ++j)
                     {
-                        color = new_image.GetPixel(j, i);
+                        color = new_image.GetPixel(i, j);
                         RGB[0] = (byte)(c * Math.Log(1.0 + color.R));
                         RGB[1] = (byte)(c * Math.Log(1.0 + color.G));
                         RGB[2] = (byte)(c * Math.Log(1.0 + color.B));
                         new_color = Color.FromArgb(0, RGB[0], RGB[1], RGB[2]);
-                        new_image.SetPixel(j, i, new_color);
+                        new_image.SetPixel(i, j, new_color);
                     }
+                }
                 string name = Directory.GetCurrentDirectory() + "\\Log_" + DateTime.Now.ToFileTimeUtc() + "Constant=" + c.ToString() + ".png";
                 new_image.Save(name, System.Drawing.Imaging.ImageFormat.Png);
                 Uri u = new Uri(name, UriKind.RelativeOrAbsolute);
@@ -257,7 +262,7 @@ namespace image_editor_Herasimov_225941
                 SeriesCollection.Clear();
             gistAxis_1.Visibility = Visibility.Visible;
 
-            Byte[] br = new Byte[256];
+            int[] br = new int[256];
             switch (color)
             {
                 case "redgist":
@@ -307,8 +312,8 @@ namespace image_editor_Herasimov_225941
                     }
             }
 
-            for (int k = 0; k < 255; k++)
-                SeriesCollection[0].Values.Add(Convert.ToInt32(br[k]));
+            for (int k = 0; k < 256; k++)
+                SeriesCollection[0].Values.Add(br[k]);
             DataContext = this;
         }
 
